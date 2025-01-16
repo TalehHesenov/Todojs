@@ -89,6 +89,7 @@ function renderTodos(){
 function deleteTodo(id){
 
     todos = todos.filter(item => item.id !== id);
+    sessionStorage.setItem("todos",JSON.stringify(todos));
     renderTodos();
     alertFun("Delete Todo","danger");
 
@@ -124,6 +125,7 @@ function allDeleteTodos(){
 
     ul.innerHTML = "";
     todos = [];
+    sessionStorage.removeItem("todos");
     alertFun("All ToDo Delete","info");
 }
 
