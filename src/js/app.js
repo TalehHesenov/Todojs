@@ -7,9 +7,15 @@ const sortSelect = document.querySelector("#sortSelect");
 const alertForm = document.querySelector("#todoAddForm");
 
 
-let todos = [];
 
 
+let todos = JSON.parse(sessionStorage.getItem("todos"));
+
+if(todos == null){
+    todos = []
+     
+ }
+ renderTodos();
 
 function addTodo(){
 
@@ -24,7 +30,9 @@ function addTodo(){
 
     todos.push(todo);
     todoName.value = "";
+    sessionStorage.setItem("todos",JSON.stringify(todos));
     renderTodos();
+    
     alertFun("Todo Elave Olundu","success");
     
    }else{
